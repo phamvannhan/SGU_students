@@ -40,6 +40,23 @@
                         <span>{!! trans("admin_menu.dashboard") !!}</span>
                     </a>
                 </li>
+
+                @if(in_array('admin.students.index', $composer_auth_permissions))
+                    <li class="{!! currentPageMenu(["*admin/students*"]) !!}">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">account_box</i>
+                            <span>{!! trans("admin_menu.students") !!}</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="{!! currentPageMenu(["*admin/students*"]) !!}">
+                                <a href="{!! route("admin.students.index") !!}">
+                                    <span>{!! trans("admin_menu.list_students") !!}</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                @endif
                
                 <li class="header"></li>
 

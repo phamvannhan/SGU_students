@@ -35,4 +35,14 @@ return [
             "admin.system.edit" => "Edit system config",
         ]
     ],
+
+    "students" => [
+        "model" => "Students",
+        "permissions" => [
+            "admin.students.index" => "Students index",
+            "admin.students.create" => "Create students",
+            "admin.students.edit" => "Edit students",
+            "admin.students.destroy" => "Delete students"
+        ]
+    ],
 ];

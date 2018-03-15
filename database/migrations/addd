@@ -1,0 +1,3 @@
+$table->foreign('class_id')->references('id')->on('class')->onDelete('cascade');
+
+$table->foreign('major_id')->references('id')->on('major')->onDelete('cascade');

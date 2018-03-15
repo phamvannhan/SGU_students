@@ -12,3 +12,7 @@
 */
 
 Route::get('auth/reset/{token}', 'AuthController@reset')->name('frontend.auth.reset');
+
+Route::get('/', function () {
+    return view('frontend.faq');
+});

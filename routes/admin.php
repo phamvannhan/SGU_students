@@ -8,9 +8,7 @@ Route::group(["prefix" => "admin"], function () {
         // Trang chủ admin
         Route::get('/dashboard', 'DashboardController@index')->name("admin.dashboard.index")->middleware("permission:admin.index");
 
-        Route::get('/', 'DashboardController@index')->name("admin.dashboard.index")->middleware("permission:admin.index");
-
-         // Cố đông
+         // user app
         resourceAdmin('users', 'UserController', 'user');
 
         // Vai trò, quyền
@@ -18,6 +16,10 @@ Route::group(["prefix" => "admin"], function () {
 
         // Hệ thống
         resourceAdmin('system', 'SystemController', 'system', 'system', ['show', 'index', 'create', 'destroy']);
+
+        // student 2 la permission
+        resourceAdmin('students', 'StudentsController', 'students');
+
     });
 
 });
