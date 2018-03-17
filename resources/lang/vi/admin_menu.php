@@ -18,4 +18,6 @@ return [
     'course'=>'Khóa học',
     'students' => 'Sinh Viên',
     'list_students' => 'Danh sách sinh viên',
+    'classes' => 'Lớp (Chi đoàn)',
+    'list_classes' => 'Danh sách lớp',
 ];

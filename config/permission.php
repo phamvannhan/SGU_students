@@ -45,4 +45,14 @@ return [
             "admin.students.destroy" => "Delete students"
         ]
     ],
+
+    "classes" => [
+        "model" => "Classes",
+        "permissions" => [
+            "admin.classes.index" => "Classes index",
+            "admin.classes.create" => "Create classes",
+            "admin.classes.edit" => "Edit classes",
+            "admin.classes.destroy" => "Delete classes"
+        ]
+    ],
 ];

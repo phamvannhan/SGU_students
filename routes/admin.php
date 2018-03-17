@@ -20,6 +20,9 @@ Route::group(["prefix" => "admin"], function () {
         // student 2 la permission
         resourceAdmin('students', 'StudentsController', 'students');
 
+        //danh sach lop
+        resourceAdmin('classes', 'ClassesController', 'classes');
+
     });
 
 });

@@ -40,6 +40,22 @@
                         <span>{!! trans("admin_menu.dashboard") !!}</span>
                     </a>
                 </li>
+                @if(in_array('admin.classes.index', $composer_auth_permissions))
+                    <li class="{!! currentPageMenu(["*admin/classes*"]) !!}">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">account_box</i>
+                            <span>{!! trans("admin_menu.classes") !!}</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="{!! currentPageMenu(["*admin/classes*"]) !!}">
+                                <a href="{!! route("admin.classes.index") !!}">
+                                    <span>{!! trans("admin_menu.list_classes") !!}</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                @endif
 
                 @if(in_array('admin.students.index', $composer_auth_permissions))
                     <li class="{!! currentPageMenu(["*admin/students*"]) !!}">

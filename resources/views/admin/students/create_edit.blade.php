@@ -19,36 +19,23 @@
                 <div class="body">
 
                     @include("admin.layouts.partials.message")
-                    @if(!empty($user))
-                        <form id="form-form" method="post" action="{!! route("admin.user.update", $user->id) !!}"
+                    @if(!empty($students))
+                        <form id="form-form" method="post" action="{!! route("admin.students.update", $students->id) !!}"
                               enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PUT">
                     @else
 
-                    <form id="form-form" method="post" action="{!! route("admin.user.store") !!}"
+                    <form id="form-form" method="post" action="{!! route("admin.students.store") !!}"
                           enctype="multipart/form-data">
                     @endif
 
                     {{ csrf_field() }}
-                    <!-- Nav tabs -->
-
-                    @include("admin.user.partials.tab")
-
-                    <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade active in" id="information">
-                                @include("admin.user.partials.information")
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane fade " id="permission">
-                                @include("admin.user.partials.permission")
-                            </div>
-
-                        </div>
-
+                    
+                        @include('admin.students.partials.information')
+                        
                         {{--Buttons--}}
                         @include("admin.layouts.partials.form_buttons", [
-                            "cancel" => route("admin.user.index")
+                            "cancel" => route("admin.students.index")
                         ])
                     </form>
                 </div>
@@ -59,11 +46,10 @@
 
 @section("script")
     <script>
-        @if(!empty($user))
+        @if(!empty($students))
             var is_edit_page = true;
         @endif
     </script>
-    @include("admin.photo.upload_template")
 
     <script type="text/javascript" src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 

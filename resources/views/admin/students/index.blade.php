@@ -65,6 +65,5 @@
     <script src="/assets/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"
             type="text/javascript"></script>
 
-
-    <script type="text/javascript" src="/assets/admin/js/pages/user.index.js?v=1.1"></script>
+    <script type="text/javascript" src="/assets/admin/js/pages/students.index.js?v=1.1"></script>
 @endsection

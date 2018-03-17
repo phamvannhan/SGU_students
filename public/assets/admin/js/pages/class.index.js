@@ -1,4 +1,3 @@
-
 jQuery(function ($) {
     var linkDatatable = $('meta[name=linkDatatable]').attr('content');
 
@@ -13,10 +12,12 @@ jQuery(function ($) {
             url: linkDatatable,
         },
         columns: [
-            {data: 'id', name: 'id', orderable: false},
-            {data: 'name', name: 'name', orderable: false},
-            {data: 'email', name: 'email', orderable: false},
-            {data: 'start_doanvien', name: 'start_doanvien', orderable: false},
+            // {data: 'id', name: 'id'},
+            {data: 'no', render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            }, orderable: false, searchable: false},
+            {data: 'class_name', name: 'class_name', orderable: false, searchable: false},
+            {data: 'created_at', name: 'created_at', orderable: false},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
         language: {

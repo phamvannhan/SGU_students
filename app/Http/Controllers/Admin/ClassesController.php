@@ -2,44 +2,41 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helper\Breadcrumb;
-use App\Http\Requests\Admin\UserCreateRequest;
-use App\Models\City;
-use App\Repositories\StudentsRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Helper\Breadcrumb;
 use Yajra\DataTables\Facades\DataTables;
+use App\Repositories\ClassesRepository;
 
-class StudentsController extends Controller
+class classesController extends Controller
 {
-    protected $students;
+    
+    protected $classes;
 
-    public function __construct(StudentsRepository $students)
+    public function __construct(ClassesRepository $classes)
     {
-        $this->students = $students;
+        $this->classes = $classes;
     }
 
     public function index()
     {
-        Breadcrumb::title(trans('admin_students.title'));
-
-        return view('admin.students.index');
-      
+        Breadcrumb::title(trans('admin_classes.title'));
+        return view('admin.classes.index');
     }
 
-    public function datatable(Request $request)
-    {
-        
-        $data = $this->students->datatable();
 
+    public function datatable()
+    {
+        $data = $this->classes->datatable();
         return DataTables::of($data)
+            
             ->addColumn(
                 'action',
                 function ($data) {
                     return view('admin.layouts.partials.table_button')->with(
                         [
-                            'link_edit' => route('admin.students.edit', $data->id),
-                            'link_delete' => $data->id > 1 ? route('admin.students.destroy', $data->id) : null,
+                            'link_edit' => route('admin.classes.edit', $data->id),
+                            'link_delete' => route('admin.classes.destroy', $data->id),
                             'id_delete' => $data->id
                         ]
                     )->render();
@@ -48,7 +45,6 @@ class StudentsController extends Controller
             ->escapeColumns([])
             ->make(true);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -56,26 +52,31 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        Breadcrumb::title(trans('admin_students.create'));
-
-        return view('admin.students.create_edit');
+        Breadcrumb::title(trans('admin_classes.create'));
+        return view('admin.classes.create_edit');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(Request $request)
     {
-       
+        $input = $request->all();
+
+        $this->classes->store($input);
+
+        session()->flash('success', trans('admin_message.created_successful', ['attr' => trans('admin_classes.classes')]));
+
+        return redirect()->route('admin.classes.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -86,36 +87,42 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-      
+        Breadcrumb::title(trans('admin_classes.edit'));
 
-        
+        $classes = $this->classes->find($id);
+
+        $categories = $this->category->all();
+
+        $metadata = $news->meta;
+
+        return view('admin.news.create_edit', compact('news', 'categories', 'metadata'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        
+        //
     }
 }
