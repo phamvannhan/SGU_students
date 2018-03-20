@@ -18,6 +18,9 @@ return [
         'phone' => 'Số điện thoại',
         'email' => 'Email',
         'birthday' => 'Ngày sinh',
+        'DiemHT' => 'Điểm học tập',
+        'DiemRL' => 'Điểm rèn luyện',
+        'classes' => 'Lớp'
         
     ],
 

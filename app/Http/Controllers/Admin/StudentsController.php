@@ -9,14 +9,16 @@ use App\Repositories\StudentsRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
+use App\Repositories\ClassesRepository;
 
 class StudentsController extends Controller
 {
     protected $students;
 
-    public function __construct(StudentsRepository $students)
+    public function __construct(StudentsRepository $students, ClassesRepository $classes)
     {
         $this->students = $students;
+        $this->classes = $classes;
     }
 
     public function index()
@@ -58,7 +60,9 @@ class StudentsController extends Controller
     {
         Breadcrumb::title(trans('admin_students.create'));
 
-        return view('admin.students.create_edit');
+        $classes = $this->classes->all();
+
+        return view('admin.students.create_edit', compact('classes'));
     }
 
     /**
@@ -67,9 +71,15 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserCreateRequest $request)
+    public function store(Request $request)
     {
-       
+       $input = $request->all();
+
+       $this->students->store($input);
+
+       session()->flash('success', trans('admin_message.created_successful', ['attr' => trans('admin_students.students')]));
+
+        return redirect()->route('admin.students.index');
     }
 
     /**

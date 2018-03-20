@@ -11,12 +11,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = \App\Models\User::where("email", "admin@sgustudents.vn")->first();
+        $user = \App\Models\User::where("email", "admin@khoamoitruong.vn")->first();
         if(!$user){
             $arr = [
                 'name' => 'Admin',
-                'email' => 'admin@sgustudents.vn',
-                "password" => \Hash::make("sgustudents.vn"),
+                'email' => 'admin@khoamoitruong.vn',
+                "password" => \Hash::make("khoamoitruong.vn"),
                 "students_code" => '311441002018',
                 "active" => 1,
                 "phone" => '0969590238',

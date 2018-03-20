@@ -11,7 +11,6 @@
     <link href="/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
 @endsection
 
-
 @section("content")
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -60,5 +59,5 @@
     <script src="/assets/plugins/jquery-validation/jquery.validate.js"></script>
     <script src="/assets/plugins/jquery-validation/localization/messages_vi.js"></script>
 
-    <script type="text/javascript" src="/assets/admin/js/pages/user.create.js?v=1.1"></script>
+    <script type="text/javascript" src="/assets/admin/js/pages/students.create.js?v=1.1"></script>
 @endsection

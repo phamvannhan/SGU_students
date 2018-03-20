@@ -14,9 +14,6 @@ Route::group(["prefix" => "admin"], function () {
         // Vai trò, quyền
         resourceAdmin('roles', 'RoleController', 'role');
 
-        // Hệ thống
-        resourceAdmin('system', 'SystemController', 'system', 'system', ['show', 'index', 'create', 'destroy']);
-
         // student 2 la permission
         resourceAdmin('students', 'StudentsController', 'students');
 

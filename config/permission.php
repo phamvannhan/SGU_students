@@ -29,13 +29,6 @@ return [
         ]
     ],
 
-    "system" => [
-        "model" => "System",
-        "permissions" => [
-            "admin.system.edit" => "Edit system config",
-        ]
-    ],
-
     "students" => [
         "model" => "Students",
         "permissions" => [

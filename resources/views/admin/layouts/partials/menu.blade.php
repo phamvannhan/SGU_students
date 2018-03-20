@@ -96,15 +96,6 @@
                         </ul>
                     </li>
                 @endif
-
-                @if(in_array('admin.system.edit', $composer_auth_permissions))
-                    <li class="{!! currentPageMenu(["*admin/system*"]) !!}">
-                        <a href="{!! route("admin.system.edit", 'dalathasfarm') !!}">
-                            <i class="material-icons">settings</i>
-                            <span>{!! trans("admin_menu.system") !!}</span>
-                        </a>
-                    </li>
-                @endif
             </ul>
         </div>
         <!-- #Menu -->
